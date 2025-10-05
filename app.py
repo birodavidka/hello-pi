@@ -27,3 +27,11 @@ def env():
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8080"))
     app.run(host="0.0.0.0", port=port)
+
+@app.get("/system")
+def system_info():
+    import psutil
+    return jsonify({
+        "cpu_percent": psutil.cpu_percent(),
+        "memory": psutil.virtual_memory().percent
+    })
