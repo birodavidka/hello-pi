@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    container_name: pi-hello
+    ports:
+      - "8080:8080" # kívülről a 8080-as porton éred el
+    environment:
+      - GREETING=Hello, Dávid! 👋
+      - PORT=8080
+    restart: unless-stopped
